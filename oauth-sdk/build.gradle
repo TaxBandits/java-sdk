@@ -1,0 +1,52 @@
+plugins {
+    id 'war'
+    id 'java'
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.oauth.sdk'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //  Thymeleaf is update the value into UI
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    //  Spring boot Web Application
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //  JSON handler
+    implementation 'org.json:json:20230227'
+    //  Java to JSON converter
+    implementation 'com.google.code.gson:gson:2.8.9'
+    //  JWT access token creation
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+    //  Web application server
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat:3.1.0'
+    // API call service
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    // Print logs as during the Retrofit call
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
+    // For development and testing purposes
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+// Name of the War file
+bootWar {
+    archiveName("${project.name}.war")
+}
