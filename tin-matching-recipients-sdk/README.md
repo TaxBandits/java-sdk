@@ -6,7 +6,7 @@ TaxBandits TIN Matching Recipient SDK is written in JAVA, used to communicate wi
 
 - Clone the project into your local machine.
    ```bash
-   git clone https://github.com/TaxBandits/java-sdk.git
+   git clone https://github.com/TaxBandits/tbs-java-sdk.git
    ```
 - Let's Navigate into the sdk-java &rarr; tin-matching-recipients-sdk folder.
 

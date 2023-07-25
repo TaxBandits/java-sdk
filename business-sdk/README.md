@@ -6,7 +6,7 @@ TaxBandits Business SDK is written in JAVA, used to communicate with the TaxBand
 
 - Clone the project into your local machine.
    ```bash
-   git clone https://github.com/TaxBandits/java-sdk.git
+   git clone https://github.com/TaxBandits/tbs-java-sdk.git
    ```
 - Let's Navigate into the sdk-java &rarr; business-sdk folder.
 
