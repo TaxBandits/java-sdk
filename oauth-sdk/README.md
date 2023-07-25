@@ -2,12 +2,13 @@
 
 -> TaxBandits SDK is written in JAVA, used to communicate with the TaxBandits API.
 
-### Developer Terms
+## Cloning and Running the Application in local
 
--> You agree to comply with all applicable laws and regulations and also agree to our
-Terms http://www.expresstaxzone.com/terms-of-use
-
--> By using the TaxBandits SDK you agree to these terms.
+- Clone the project into your local machine.
+   ```bash
+   git clone https://github.com/TaxBandits/tbs-java-sdk.git
+   ```
+- Let's Navigate into the sdk-java &rarr; business-sdk folder.
 
 ## Technical Requirements:
 
