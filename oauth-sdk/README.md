@@ -42,7 +42,7 @@
 
 build.gradle(project)
 
-- Thymeleaf is update the value into UI
+- Thymeleaf will serve the value to the Front-end UI.
 
 ``` dependencies
   implementation 'org.springframework boot:spring-boot-starter-thymeleaf'
@@ -81,7 +81,7 @@ build.gradle(project)
   implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 ```
 
-- Print logs as during the Retrofit call
+- Print logs during the Retrofit call
 
 ``` dependencies
   implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
@@ -112,13 +112,13 @@ build.gradle(project)
 
 | Header Param     | Type   | Description                                                                                                                  |
 |:-----------------|:-------|:-----------------------------------------------------------------------------------------------------------------------------|
-| `Authentication` | String | **Required**, Generate *JwsToken* by given the API credentials are ClientId, ClientSecret and UserToken with HMAC algorithm. |
+| `Authentication` | String | **Required**, Generate *JWS Token* by giving the API credentials(ClientId, ClientSecret and UserToken) using HMAC algorithm. |
 
 ##### Response:
 
 | Body Response | Type   | Description                                       |
 |:--------------|:-------|:--------------------------------------------------|
-| `AccessToken` | String | We can use future of API calls for Authorization. |
+| `AccessToken` | String | The AccessToken should be provided in the Authorization header of all the API Calls. |
 
 ### Get Business List
 
@@ -130,13 +130,13 @@ build.gradle(project)
 
 | Header Param    | Type   | Description                                                 |
 |:----------------|:-------|:------------------------------------------------------------|
-| `Authorization` | String | **Required**, This is AccessToken for data access from API. |
+| `Authorization` | String | **Required**, To access TaxBandits API |
 
 ##### Response:
 
 | Body Response | Type | Description                |
 |:--------------|:-----|:---------------------------|
-| `Businesses`  | List | We can getting businesses. |
+| `Businesses`  | List | The Businesses created under the account will be listed |
 
 ## Screenshot
 
