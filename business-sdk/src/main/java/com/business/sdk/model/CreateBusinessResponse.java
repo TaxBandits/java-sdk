@@ -1,17 +1,11 @@
 package com.business.sdk.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class CreateBusinessResponse {
 
     private String BusinessId;
     private String BusinessNm;
-    private String FirstNm;
-    private String MiddleNm;
-    private String LastNm;
-    private String Suffix;
     private String EINorSSN;
     private List<Error> Errors;
     private Boolean IsEIN;
@@ -34,38 +28,6 @@ public class CreateBusinessResponse {
 
     public void setBusinessNm(String businessNm) {
         BusinessNm = businessNm;
-    }
-
-    public String getFirstNm() {
-        return FirstNm;
-    }
-
-    public void setFirstNm(String firstNm) {
-        FirstNm = firstNm;
-    }
-
-    public String getMiddleNm() {
-        return MiddleNm;
-    }
-
-    public void setMiddleNm(String middleNm) {
-        MiddleNm = middleNm;
-    }
-
-    public String getLastNm() {
-        return LastNm;
-    }
-
-    public void setLastNm(String lastNm) {
-        LastNm = lastNm;
-    }
-
-    public String getSuffix() {
-        return Suffix;
-    }
-
-    public void setSuffix(String suffix) {
-        Suffix = suffix;
     }
 
     public String getEINorSSN() {

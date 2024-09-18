@@ -38,7 +38,7 @@ function getTinList(businessId) {
                 var rows = '';
                 $.each(tinmatchingRecords, function(index, tinmatchingRecord) {
                     var options = '<div class="col-6 me-1"><button type="button" class="btn btn-primary status-btn btn_smm" onClick="status(`' + tinmatchingRecord.tintype + '`,`' + tinmatchingRecord.tin + '`)"> Get Status </button></div> <div class="col-6 me-2"><button class="btn_cancel btn_smm1" onClick="cancelRequest(`' + tinmatchingRecord.submissionId + '`,`' + tinmatchingRecord.recordId + '`)"><span class="mdi mdi-close pe-1"></span> Cancel </button></div>';
-                    rows += '<tr><td class="taL text-center flex-row justify-content-center">' + tinmatchingRecord.sequenceId + '</td><td class="taL">' + tinmatchingRecord.submissionId + '</td><td class="taL">' + tinmatchingRecord.name + '</td><td class="taL">' + tinmatchingRecord.recordId + '</td><td class="taL">' + tinmatchingRecord.status + '</td><td class="text-center d-flex flex-row justify-content-center">' + options + '</td></tr>';
+                    rows += '<tr><td class="taL">' + tinmatchingRecord.sequenceId + '</td><td class="taL">' + tinmatchingRecord.submissionId + '</td><td class="taL">' + tinmatchingRecord.name + '</td><td class="taL">' + tinmatchingRecord.recordId + '</td><td class="taL">' + tinmatchingRecord.status + '</td><td class="text-center d-flex flex-row justify-content-center">' + options + '</td></tr>';
                 });
 
                 // Append only once

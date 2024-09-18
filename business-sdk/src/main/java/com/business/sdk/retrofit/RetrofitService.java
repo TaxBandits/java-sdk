@@ -1,6 +1,8 @@
 package com.business.sdk.retrofit;
 
+import com.business.sdk.utils.QuickTags;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -32,6 +34,24 @@ public class RetrofitService {
             httpClient.addInterceptor(new HeaderInterceptor(headers));
             httpClient.addInterceptor(loggingInterceptor);
             builder.client(httpClient.build());
+            retrofit = builder.build();
+        }
+        return retrofit.create(serviceClass);
+    }
+
+    // OAuth API service
+    public <R> R createService(Class<R> serviceClass, final String token) {
+        if (token != null) {
+            httpClient.interceptors().clear();
+            httpClient.addInterceptor(chain -> {
+                Request original = chain.request();
+                Request.Builder requestBuilder = original.newBuilder()
+                        .header(QuickTags.AUTHENTICATION, token);
+                Request request = requestBuilder.build();
+                return chain.proceed(request);
+            });
+            builder.client(httpClient.build());
+            httpClient.addInterceptor(loggingInterceptor);
             retrofit = builder.build();
         }
         return retrofit.create(serviceClass);

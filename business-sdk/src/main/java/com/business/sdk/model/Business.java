@@ -1,15 +1,9 @@
 package com.business.sdk.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Business {
 
     private String BusinessId;
     private String BusinessNm;
-    private String FirstNm;
-    private String MiddleNm;
-    private String LastNm;
-    private String Suffix;
     private String BusinessType;
     private String ContactNm;
     private String EINorSSN;
@@ -31,38 +25,6 @@ public class Business {
 
     public void setBusinessNm(String businessNm) {
         BusinessNm = businessNm;
-    }
-
-    public String getFirstNm() {
-        return FirstNm;
-    }
-
-    public void setFirstNm(String firstNm) {
-        FirstNm = firstNm;
-    }
-
-    public String getMiddleNm() {
-        return MiddleNm;
-    }
-
-    public void setMiddleNm(String middleNm) {
-        MiddleNm = middleNm;
-    }
-
-    public String getLastNm() {
-        return LastNm;
-    }
-
-    public void setLastNm(String lastNm) {
-        LastNm = lastNm;
-    }
-
-    public String getSuffix() {
-        return Suffix;
-    }
-
-    public void setSuffix(String suffix) {
-        Suffix = suffix;
     }
 
     public String getBusinessType() {

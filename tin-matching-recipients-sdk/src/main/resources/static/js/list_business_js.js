@@ -24,9 +24,7 @@ function getBusinessList() {
                 $.each(businesses, function(index, business) {
                     var requestButtonId = "btnNavigateToTinRequest" + index;
                     var listButtonId = "btnNavigateToList" + index;
-                    var isSsnTemp = isSSN(business.einorSSN);
-                    var businessOrFullName = (isSsnTemp && isValidString(business.firstNm)) ? business.firstNm + ' ' + business.lastNm : business.businessNm;
-                    rows += '<tr><td>' + business.businessId +'</td><td class="taL text-center flex-row justify-content-center">' + !isSsnTemp + '</td><td class="taL text-center flex-row justify-content-center">' + business.einorSSN + '</td><td class="taL">' + businessOrFullName + '</td><td class="taL" style="word-break: break-all">' + business.email + '</td><td class="taL text-center d-flex flex-row justify-content-center"><button class="btn btn-primary status-btn btn_smm me-2" id="' + requestButtonId + '"> Request TIN Match </button> <button class="btn btn-primary status-btn btn_smm" id="' + listButtonId + '"> List </button></td></tr>';
+                    rows += '<tr><td>' + business.businessId +'</td><td class="taL">' + business.businessNm +'</td><td class="taL" style="word-break: break-all">' + business.email + '</td><td class="taL text-center d-flex flex-row justify-content-center"><button class="btn btn-primary status-btn btn_smm me-2" id="' + requestButtonId + '"> Request TIN Match </button> <button class="btn btn-primary status-btn btn_smm" id="' + listButtonId + '"> List </button></td></tr>';
                 });
 
                 // Append only once:

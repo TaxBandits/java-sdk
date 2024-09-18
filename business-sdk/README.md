@@ -164,7 +164,7 @@ Used to create and List the Businesses.
 ```
 **Sandbox**
 ```jsx
-https://testapi.taxbandits.com/{version}/Business/Create
+https://testapi.taxbandits.com/v1.7.3/Business/Create
 ```
 
 ##### Request:
@@ -190,7 +190,7 @@ https://testapi.taxbandits.com/{version}/Business/Create
 ```
 **Sandbox**
 ```jsx
-  https://testapi.taxbandits.com/{version}/Business/List
+  https://testapi.taxbandits.com/v1.7.3/Business/List
 ```
 ##### Request:
 
@@ -208,7 +208,5 @@ https://testapi.taxbandits.com/{version}/Business/Create
 | Response Body | Type | Description                |
 |:--------------|:-----|:---------------------------|
 | `Businesses`  | List | We can getting businesses. |
-
-> In the above URLs, `{version}` is the endpoint version of TaxBandits API.
 
 For more information, please refer: https://developer.taxbandits.com/

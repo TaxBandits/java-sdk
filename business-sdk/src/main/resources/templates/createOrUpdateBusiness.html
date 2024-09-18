@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Payer Ref:</label>
+                        <label class="control-label"><span class="text-danger"></span>Payer Ref:</label>
                         <input type="text" class="form-control" id="textPayerRef"/>
                     </div>
                 </div>
@@ -53,50 +53,18 @@
             <div class="row d-flex justify-content-center mb-15px">
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Trade Name:</label>
+                        <label class="control-label"><span class="text-danger"></span>Trade Name:</label>
                         <input type="text" class="form-control" id="textTradeName"/>
+
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="labelName">
                         <label class="control-label"><span class="text-danger">*</span>EIN or SSN:</label>
                         <span class="m-3">
-                                <input class="form-check-input cursor-pointer" type="checkbox" id="checkBoxIsEIN"/> Is EIN?</span>
+                                <input class="form-check-input cursor-pointer" type="checkbox"
+                                       id="checkBoxIsEIN"/> Is EIN?</span>
                         <input type="text" class="form-control" id="textEINOrSSN" maxLength="9"/>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tinDiv">
-                <div class="row d-flex justify-content-center mb-15px">
-                    <div class="col-md-5">
-                        <div class="labelName">
-                            <label class="control-label"><span class="text-danger">*</span>First Name:</label>
-                            <input type="text" class="form-control" id="textFirstName"/>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="labelName">
-                            <label class="control-label">Middle Name:</label>
-                            <input type="text" class="form-control" id="textMeddleName"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row d-flex justify-content-center mb-15px">
-                    <div class="col-md-5">
-                        <div class="labelName">
-                            <label class="control-label"><span class="text-danger">*</span>Last Name:</label>
-                            <input type="text" class="form-control" id="textLastName"/>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="labelName">
-                            <label class="control-label">Suffix:</label>
-                            <select class="form-control form-select" id="selectSuffix">
-                                <option disabled selected value="">Suffix</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -112,7 +80,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Contact Name:</label>
+                        <label class="control-label"><span class="text-danger"></span>Contact Name:</label>
                         <input type="text" class="form-control" id="textContactName"/>
                     </div>
                 </div>
@@ -127,7 +95,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Phone Extn:</label>
+                        <label class="control-label"><span class="text-danger"></span>Phone Extn:</label>
                         <input type="text" class="form-control" id="textPhoneExtn" maxLength="5"/>
                     </div>
                 </div>
@@ -136,7 +104,7 @@
             <div class="row d-flex justify-content-center mb-15px">
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Fax:</label>
+                        <label class="control-label"><span class="text-danger"></span>Fax:</label>
                         <input type="text" class="form-control" id="textFax" maxLength="10"/>
                     </div>
                 </div>
@@ -162,7 +130,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Signing Authority
+                        <label class="control-label"><span class="text-danger"></span>Signing Authority
                             Name:</label>
                         <input type="text" class="form-control" id="textSigningAuthorityName"/>
                     </div>
@@ -172,7 +140,7 @@
             <div class="row d-flex justify-content-center mb-15px">
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Signing Authority
+                        <label class="control-label"><span class="text-danger"></span>Signing Authority
                             Phone:</label>
                         <input type="text" class="form-control" id="textSigningAuthorityPhone" maxLength="10"/>
                     </div>
@@ -210,7 +178,7 @@
             <div class="row d-flex justify-content-center mb-15px">
                 <div class="col-md-5">
                     <div class="labelName">
-                        <label class="control-label">Address 2:</label>
+                        <label class="control-label"><span class="text-danger"></span>Address 2:</label>
                         <input type="text" class="form-control" id="textAddress2"/>
                     </div>
                 </div>
@@ -334,7 +302,7 @@
                                         <th class="text-center fw-600">Business Id</th>
                                         <th class="text-center">IsEIN</th>
                                         <th class="text-center">EINorSSN</th>
-                                        <th class="text-center">Business Name/Full Name</th>
+                                        <th class="text-center">Business Name</th>
                                     </tr>
                                     <tbody id="successRecordsTBody">
                                     </tbody>

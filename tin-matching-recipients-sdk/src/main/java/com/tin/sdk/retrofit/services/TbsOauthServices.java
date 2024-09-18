@@ -20,7 +20,7 @@ public class TbsOauthServices {
 
             // Synchronous API call
             Response<AccessTokenResponse> response = new RetrofitService(true)
-                    .createService(OauthService.class, ApiUtils.getOauthHeaders(jws_token))
+                    .createService(OauthService.class, jws_token)
                     .tbsAuth()
                     .execute();
 
