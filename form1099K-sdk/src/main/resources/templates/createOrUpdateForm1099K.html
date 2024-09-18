@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles/css/Site.css">
+    <link rel="stylesheet" href="styles/css/style.css">
+    <link rel="stylesheet" href="styles/css/icons-mdi/css/materialdesignicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Form1099K</title>
+</head>
+
+<body>
+
+<div class="position-relative text-center" id="pageProgressBar" style="display:none">
+    <div class="position-fixed w-100 h-100 d-flex align-items-center justify-content-center z-index-9999">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 text-center mt-3">
+    <img src="images/tbslogo.png" alt="TaxBandits Logo" class="mb-5 logo">
+</div>
+
+<div class="header text-center mb-3"></div>
+
+<div class="container">
+
+    <div class="w-75 m-auto" id="divPageBody" style="display:none">
+
+        <div class="border-1 border rounded-2 pb-4">
+
+            <h2 class="head-h1 px-12px" id="h2PageTitle">Create Form1099K</h2>
+
+            <div class="px-4">
+
+                <div class="d-flex  align-items-center fs-20 text-dark">
+                    <h1 class="head-1 me-3" id="hBusinessName"></h1>
+                    <span class="text-muted fs-14" id="spanEinOrSnn"></span>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px bg-white">
+
+                    <div class="col-md-6">
+                        <div class="labelName">
+                            <label class="control-label"><span class="text-danger">*</span>Tax Year:</label>
+                            <input type="text" class="form-control" id="textTaxYear"
+                                   onkeydown="return validateLongInput(event)"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6"></div>
+
+                    <div class="col mt-3">
+                        <label class="me-3"><input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                                   id="checkIsFederalFiling"/> IsFederalFiling</label>
+
+                        <label class="me-3"><input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                                   id="checkIsStateFiling"/> IsStateFiling</label>
+
+                        <label class="me-3"><input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                                   id="checkIsPostal"/> IsPostal</label>
+
+                        <label class="me-3"><input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                                   id="checkIsOnlineAccess"/> IsOnlineAccess</label>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>SequenceId:</label>
+                                <input type="text" class="form-control" id="textSequenceId"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <label class="control-label"><span class="text-danger">*</span>TINType:</label>
+                            <div class="mt-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="radioTINTypeEIN" value="EIN"
+                                           name="radioTINType"/>
+                                    <label class="form-check-label" for="radioTINTypeEIN">EIN</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="radioTINTypeSSN" value="SSN"
+                                           name="radioTINType"/>
+                                    <label class="form-check-label" for="radioTINTypeSSN">SSN</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="radioTINTypeATIN" value="ATIN"
+                                           name="radioTINType"/>
+                                    <label class="form-check-label" for="radioTINTypeATIN">ATIN</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="radioTINTypeITIN" value="ITIN"
+                                           name="radioTINType"/>
+                                    <label class="form-check-label" for="radioTINTypeITIN">ITIN</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>TIN:</label>
+                                <input type="text" class="form-control" id="textTIN"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px" id="name-row-1">
+                        <div class="col-md-6" id="first-name-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>First Name:</label>
+                                <input type="text" class="form-control" id="textFirstPayeeNm"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="middle-name-field" style="display:none">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>Middle Name:</label>
+                                <input type="text" class="form-control" id="textMiddleNm"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px" id="name-row-2">
+                        <div class="col-md-6" id="last-name-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>Last Name:</label>
+                                <input type="text" class="form-control" id="textSecondPayeeNm"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="suffix-field" style="display:none">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>Suffix:</label>
+                                <select class="form-control form-select" id="selectSuffix">
+                                    <option disabled selected value="">Suffix</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-2">
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-6">
+                            <span><input class="form-check-input cursor-pointer" type="checkbox" id="checkIsForeign"/> Is Foreign?</span>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px" id="address-field1">
+                        <div class="col-md-6" id="address1-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>Address1:</label>
+                                <input type="text" class="form-control" id="textAddress1"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="address2-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>Address2:</label>
+                                <input type="text" class="form-control" id="textAddress2"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px" id="address-field2">
+                        <div class="col-md-6" id="city-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>City:</label>
+                                <input type="text" class="form-control" id="textCity"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="state-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>State:</label>
+                                <select class="form-control form-select" id="selectState">
+                                    <option selected disabled value="">--Select State--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="province-or-state-field" style="display:none">
+                            <div class="labelName">
+                                <label class="control-label"><span
+                                        class="text-danger">*</span>ProvinceOrStateNm:</label>
+                                <input type="text" class="form-control" id="textProvinceOrStateNm"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px" id="address-field3">
+                        <div class="col-md-6" id="zip-code-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>Zip Code:</label>
+                                <input type="text" class="form-control" id="textZipCd"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="country-field" style="display:none">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>Country:</label>
+                                <select class="form-control form-select" id="selectCountry">
+                                    <option selected disabled value="">--Select Country--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="email-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>Email:</label>
+                                <input type="text" class="form-control" id="textEmail"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="postal-code-field" style="display:none">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger">*</span>Postal Code:</label>
+                                <input type="text" class="form-control" id="textPostalCd"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px" id="address-field4">
+                        <div class="col-md-6" id="phone-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>Phone:</label>
+                                <input type="text" class="form-control" id="textPhone"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="fax-field">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>Fax:</label>
+                                <input type="text" class="form-control" id="textFax"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px" id="address-field5">
+                        <div class="col-md-6" id="dummy-field"></div>
+                    </div>
+
+                    <h5 class="sub-head text-left mt-4 mb-3 " style="font-weight: bold">Form 1099-K Details</h5>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">Gross amount of payment card/third party network
+                                    transactions</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB1aGrossAmt"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">Card Not Present transactions</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB1bCardNotPresentTxns"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">Merchant category code:</label>
+                                <input type="text" class="form-control" id="textB2MerchantCd"
+                                       onkeydown="return validateDecimalInput(event)"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">
+                                    <span class="text-danger">*</span>Number of payment transactions
+                                </label>
+                                <input type="text" class="form-control" id="textB3NumPymtTxns"
+                                       onkeydown="return validateLongInput(event)"/>
+                                <div class="mt-2">
+                                    <input class="form-check-input cursor-pointer me-2" type="checkbox"
+                                           id="checkIs2ndTINnot"/>2ndTINnot
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">Federal income tax withheld</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB4FedTaxWH"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">January</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5aJan"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">February</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5bFeb"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">March</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5cMar"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">April</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5dApr"
+                                           onkeydown="return validateDecimalInput(event)"/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">May</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5eMay"
+                                           onkeydown="return validateDecimalInput(event)"/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">June</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5fJun"
+                                           onkeydown="return validateDecimalInput(event)"/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">July</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5gJul"
+                                           onkeydown="return validateDecimalInput(event)"/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">August</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5hAug"
+                                           onkeydown="return validateDecimalInput(event)"/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">September</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5iSep"
+                                           onkeydown="return validateDecimalInput(event)"/>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">October</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5jOct"
+                                           onkeydown="return validateDecimalInput(event)"/>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">November</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5kNov"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">December</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="textB5lDec"
+                                           onkeydown="return validateDecimalInput(event)"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">Account number</label>
+                                <input type="text" class="form-control" id="textAccountNum"
+                                       onkeydown="return validateLongInput(event)"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <label class="control-label">
+                                <span class="text-danger">*</span>Check to indicate if FILER is a (an):
+                            </label>
+                            <div class="mt-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioFilerIndicator"
+                                           id="radioPSE" value="PSE"/>
+                                    <label class="form-check-label" for="radioPSE">PSE</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioFilerIndicator"
+                                           id="radioEPF" value="EPF"/>
+                                    <label class="form-check-label" for="radioEPF">EPF</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label"><span class="text-danger">*</span>Check to indicate
+                                transactions reported are:</label>
+                            <div class="mt-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioIndicateTxnsReported"
+                                           id="radioPaymentCard" value="PAYMENT_CARD"/>
+                                    <label class="form-check-label" for="radioPaymentCard">Payment card</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioIndicateTxnsReported"
+                                           id="radioThirdPartyNetwork" value="THIRD_PARTY_NETWORK"/>
+                                    <label class="form-check-label" for="radioThirdPartyNetwork">Third party
+                                        network</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">PSEName</label>
+                                <input type="text" class="form-control" id="textPSEName"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">PSEPhone</label>
+                                <input type="text" class="form-control" id="textPSEPhone"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">Form 1099K State Details</h5>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">State tax withheld:</label>
+                                <input type="text" class="form-control" id="textStateTaxWithheld1"
+                                       onkeydown="return validateDecimalInput(event)"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">State:</label>
+                                <select class="form-control form-select" id="selectState1">
+                                    <option selected disabled value="">--Select State--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">Payer's state no:</label>
+                                <input type="text" class="form-control" id="textPayerStateNo1"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label">State income:</label>
+                                <input type="text" class="form-control" id="textStateIncome1"
+                                       onkeydown="return validateDecimalInput(event)"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>State tax
+                                    withheld:</label>
+                                <input type="text" class="form-control" id="textStateTaxWithheld2"
+                                       onkeydown="return validateDecimalInput(event)"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>State:</label>
+                                <select class="form-control form-select" id="selectState2">
+                                    <option selected disabled value="">--Select State--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>Payer's state no:</label>
+                                <input type="text" class="form-control" id="textPayerStateNo2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="labelName">
+                                <label class="control-label"><span class="text-danger"></span>State income:</label>
+                                <input type="text" class="form-control" id="textStateIncome2"
+                                       onkeydown="return validateDecimalInput(event)"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="stateRecon1"></div>
+
+                    <div id="stateRecon2"></div>
+
+                    <div class="d-flex justify-content-end align-items-center mt-5">
+                        <div class=" p-2">
+                            <button class="btn btn_primary btn_md" id="btnValidateForm">Validate Form <i
+                                    class="fa fa-spinner fa-spin" aria-hidden="true" id="validateForm1099KProgressBar"
+                                    style="display:none"></i></button>
+                        </div>
+                        <div class="">
+                            <button type="submit" class="btn btn_primary btn_md" id="btnCreateOrUpdateForm1099K">
+                                Create Form1099K
+                                <i class="fa fa-spinner fa-spin" aria-hidden="true" id="createForm1099KProgressBar"
+                                   style="display:none"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="btn_back mt-3 mb-5" id="btnNavigateToForm1099KList">Back</button>
+
+    </div>
+
+    <div class="modal fade" id="errorModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+         tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Response / Status</h5>
+                    <button type="button"
+                            class="btn-close bg-white rounded-circle border-0 fw-bold position-absolute end-n-10 top-n-13 modal-close button-hide fs-18 fw-500"
+                            data-bs-dismiss="modal" aria-label="Close">X
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-container mt-2 mb-4">
+                        <table>
+                            <tr class="fw-600">
+                                <th class="text-center fw-600 bg-dull-blue" width="25%">Status Code</th>
+                                <th class="text-center" width="30%">Status Name</th>
+                                <th class="text-center" width="35%">Status Message</th>
+                            </tr>
+
+                            <tbody id="createForm1099KStatusTBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="errorRecordsBody" style="display:none">
+                        <h2 class="tabel-sub-head">Error Records</h2>
+                        <div id="errorRecords"></div>
+                    </div>
+
+                    <div id="errorBody" style="display:none">
+                        <h2 class="tabel-sub-head">Error Records</h2>
+                        <div class="table-container mb-3">
+                            <table>
+                                <tr class="fw-600">
+                                    <th class="text-center fw-600" width="30%">Id</th>
+                                    <th class="text-center" width="35%">Name</th>
+                                    <th class="text-center" width="35%">Message</th>
+                                    <th class="text-center" width="35%">Type</th>
+                                </tr>
+
+                                <tbody id="errorsTBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="successRecords">
+                        <h2 class="tabel-sub-head">Success Records</h2>
+                        <div class="table-container mb-3">
+                            <table>
+                                <tr class="fw-600">
+                                    <th class="text-center fw-600" width="30%">BusinessId</th>
+                                    <th class="text-center" width="35%">SubmissionId</th>
+                                    <th class="text-center" width="35%">RecordId</th>
+                                </tr>
+                                <tbody>
+                                <tr>
+                                    <td class="taL" id="tdBusinessId"></td>
+                                    <td class="taL" id="tdSubmissionId"></td>
+                                    <td class="taL" id="tdRecordId"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="js/navigate_js.js"></script>
+<script src="js/utils_js.js"></script>
+<script src="js/field_validate_js.js"></script>
+<script src="js/string_utils_js.js"></script>
+<script src="js/end_points_js.js"></script>
+<script src="js/create_or_update_form1099_k_js.js"></script>
+
+</body>
+</html>
