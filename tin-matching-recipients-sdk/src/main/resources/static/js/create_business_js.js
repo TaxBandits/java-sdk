@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     // Initial method calls
+    suffixes();
     businessTypes();
     getKindOfEmployers();
     getKindOfKindOfPayers();
@@ -8,6 +9,10 @@ $(document).ready(function() {
     getCountries();
 
     //  Button click handlers
+    $("#checkBoxIsEIN").change(function() {
+        tinViewChanges($("#checkBoxIsEIN").is(":checked"));
+    });
+
     $("#selectBusinessType").change(function(){
         businessMemberTypes();
     });
@@ -23,6 +28,12 @@ $(document).ready(function() {
 });
 
 // US or Foreign UI changes
+function tinViewChanges(isEIN) {
+    if(isEIN) $("#tinDiv").hide();
+    else $("#tinDiv").show();
+}
+
+// US or Foreign UI changes
 function usAddressesViewChanges(isUS) {
     if(isUS) {
         $("#foreignDiv").show();
@@ -31,6 +42,28 @@ function usAddressesViewChanges(isUS) {
         $("#foreignDiv").hide();
         $("#usDiv").show();
     }
+}
+
+// Load Business Types into Dropdown
+function suffixes() {
+    $.ajax({
+        async: false,
+        url: suffixesEndPoint,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (businesses) {
+            if(businesses !== null) {
+                $.each(businesses, function (index, value) {
+                    $('#selectSuffix').append('<option value="' + value.enumValue + '">' + value.enumDisplayName + '</option>');
+                });
+            } else {
+                console.log("Something wrong!");
+            }
+        },
+        error: function (err) {
+            console.log(JSON.stringify(err));
+        }
+    });
 }
 
 // Load Business Types into Dropdown
@@ -201,10 +234,14 @@ function createBusiness() {
     var request = {
           businessId: null,
           businessNm: $("#textBusinessName").val(),
+          firstNm: $("#textFirstName").val(),
+          middleNm: $("#textMeddleName").val(),
+          lastNm: $("#textLastName").val(),
           payerRef: $("#textPayerRef").val(),
           einorSSN: $("#textEINOrSSN").val(),
           ein: $("#checkBoxIsEIN").is(":checked"),
           businessType: $('#selectBusinessType').find(":selected").val(),
+          suffix: $('#selectSuffix').find(":selected").val(),
           contactNm: $("#textContactName").val(),
           email: $("#textEmailAddress").val(),
           fax: $("#textFax").val(),

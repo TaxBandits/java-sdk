@@ -10,6 +10,14 @@ public class CreateBusinessRequest {
     private String BusinessNm;
     @SerializedName(value = "businessType", alternate = {"BusinessType"})
     private String BusinessType;
+    @SerializedName(value = "firstNm", alternate = {"FirstNm"})
+    private String FirstNm;
+    @SerializedName(value = "middleNm", alternate = {"MiddleNm"})
+    private String MiddleNm;
+    @SerializedName(value = "lastNm", alternate = {"LastNm"})
+    private String LastNm;
+    @SerializedName(value = "suffix", alternate = {"Suffix"})
+    private String Suffix;
     @SerializedName(value = "contactNm", alternate = {"ContactNm"})
     private String ContactNm;
     @SerializedName(value = "einorSSN", alternate = {"EINorSSN"})
@@ -57,6 +65,46 @@ public class CreateBusinessRequest {
 
     public void setBusinessType(String businessType) {
         BusinessType = businessType;
+    }
+
+    public String getBusinessId() {
+        return BusinessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        BusinessId = businessId;
+    }
+
+    public String getFirstNm() {
+        return FirstNm;
+    }
+
+    public void setFirstNm(String firstNm) {
+        FirstNm = firstNm;
+    }
+
+    public String getMiddleNm() {
+        return MiddleNm;
+    }
+
+    public void setMiddleNm(String middleNm) {
+        MiddleNm = middleNm;
+    }
+
+    public String getLastNm() {
+        return LastNm;
+    }
+
+    public void setLastNm(String lastNm) {
+        LastNm = lastNm;
+    }
+
+    public String getSuffix() {
+        return Suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        Suffix = suffix;
     }
 
     public String getContactNm() {

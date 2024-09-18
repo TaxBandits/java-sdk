@@ -10,6 +10,16 @@ import java.util.HashMap;
 public class ApiUtils {
 
     /**
+     * Load the header by Authentication
+     **/
+    public static HashMap<String, String> getOauthHeaders(String jwsToken) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put(QuickTags.AUTHENTICATION, jwsToken);
+        hashMap.put(QuickTags.CONTENT_TYPE, "application/json");
+        return hashMap;
+    }
+
+    /**
      * Load the header by Authorization
      **/
     public static HashMap<String, String> getHeaders(String jwtToken) {
@@ -24,10 +34,12 @@ public class ApiUtils {
      **/
     public static <T> T getFailureData(Response<T> response, Class<T> classType) {
         try {
-            ResponseBody errorBody = response.errorBody();
-            if (errorBody != null) {
-                Object newObject = new Gson().fromJson(errorBody.charStream(), classType);
-                return classType.cast(newObject);
+            if (response != null) {
+                ResponseBody errorBody = response.errorBody();
+                if (errorBody != null) {
+                    Object newObject = new Gson().fromJson(errorBody.charStream(), classType);
+                    return classType.cast(newObject);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

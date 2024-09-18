@@ -18,6 +18,25 @@ function isAvailableData(type) {
     return type === AVAILABLE_DATA;
 }
 
+//  Get (-)Hyphen count as given a string
+function getHyphenCount(text) {
+    var hyphenCount = 0;
+    if(isValidString(text))
+        for (var i = 0; i < text.length; i++)
+            if (text[i] === '-') hyphenCount++;
+    return hyphenCount;
+}
+
+// Check weather is EIN or not
+function isEIN(ein) {
+    return getHyphenCount(ein) == 1;
+}
+
+// Check weather is SSN or not
+function isSSN(ssn) {
+    return getHyphenCount(ssn) == 2;
+}
+
 // Success the status of the API
 function is200(code) {
     return code === 200;
