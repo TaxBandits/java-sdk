@@ -19,45 +19,21 @@ public class RetrofitService {
     private final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     private final HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BASIC);
+            .setLevel(HttpLoggingInterceptor.Level.BODY);
 
     public RetrofitService(boolean isAuth) {
-        String BASIC_URL = (isAuth ? ApiConfig.TBS_O_AUTH_BASE_URL : ApiConfig.BASE_URL);
+        String BASIC_URL = (isAuth ? ApiConfig.TBS_PUBLIC_API_OAUTH : ApiConfig.TBS_PUBLIC_API_BASE_URL);
         builder = new Retrofit.Builder()
                 .baseUrl(BASIC_URL)
                 .addConverterFactory(GsonConverterFactory.create());
     }
 
+    // API services
     public <R> R createService(Class<R> serviceClass, HashMap<String, String> headers) {
         if (!httpClient.interceptors().contains(loggingInterceptor)) {
             httpClient.interceptors().clear();
-            httpClient.addInterceptor(chain -> {
-                Request original = chain.request();
-                Request.Builder requestBuilder = original.newBuilder();
-                for (Map.Entry<String, String> header : headers.entrySet()) {
-                    requestBuilder.header(header.getKey(), header.getValue());
-                }
-
-                Request request = requestBuilder.build();
-                return chain.proceed(request);
-            });
+            httpClient.addInterceptor(new HeaderInterceptor(headers));
             httpClient.addInterceptor(loggingInterceptor);
-            builder.client(httpClient.build());
-            retrofit = builder.build();
-        }
-        return retrofit.create(serviceClass);
-    }
-
-    public <R> R createService(Class<R> serviceClass, final String token) {
-        if (token != null) {
-            httpClient.interceptors().clear();
-            httpClient.addInterceptor(chain -> {
-                Request original = chain.request();
-                Request.Builder requestBuilder = original.newBuilder()
-                        .header(QuickTags.AUTHENTICATION, token);
-                Request request = requestBuilder.build();
-                return chain.proceed(request);
-            });
             builder.client(httpClient.build());
             retrofit = builder.build();
         }

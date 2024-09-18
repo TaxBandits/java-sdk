@@ -1,6 +1,7 @@
 package com.oauth.sdk.retrofit.services;
 
 import com.oauth.sdk.model.AccessTokenResponse;
+import com.oauth.sdk.retrofit.ApiUtils;
 import com.oauth.sdk.retrofit.OauthService;
 import com.oauth.sdk.retrofit.RetrofitResponse;
 import com.oauth.sdk.retrofit.RetrofitService;
@@ -17,7 +18,7 @@ public class TbsOauth {
         try {
 
             Response<AccessTokenResponse> response = new RetrofitService(true)
-                    .createService(OauthService.class, jws_token)
+                    .createService(OauthService.class, ApiUtils.getOauthHeaders(jws_token))
                     .tbsAuth()
                     .execute();
 

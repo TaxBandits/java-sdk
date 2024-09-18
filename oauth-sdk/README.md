@@ -2,13 +2,12 @@
 
 -> TaxBandits SDK is written in JAVA, used to communicate with the TaxBandits API.
 
-## Cloning and Running the Application in local
+### Developer Terms
 
-- Clone the project into your local machine.
-   ```bash
-   git clone https://github.com/TaxBandits/tbs-java-sdk.git
-   ```
-- Let's Navigate into the sdk-java &rarr; business-sdk folder.
+-> You agree to comply with all applicable laws and regulations and also agree to our
+Terms http://www.expresstaxzone.com/terms-of-use
+
+-> By using the TaxBandits SDK you agree to these terms.
 
 ## Technical Requirements:
 
@@ -42,7 +41,7 @@
 
 build.gradle(project)
 
-- Thymeleaf will serve the value to the Front-end UI.
+- Thymeleaf is update the value into UI
 
 ``` dependencies
   implementation 'org.springframework boot:spring-boot-starter-thymeleaf'
@@ -81,7 +80,7 @@ build.gradle(project)
   implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 ```
 
-- Print logs during the Retrofit call
+- Print logs as during the Retrofit call
 
 ``` dependencies
   implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
@@ -112,13 +111,13 @@ build.gradle(project)
 
 | Header Param     | Type   | Description                                                                                                                  |
 |:-----------------|:-------|:-----------------------------------------------------------------------------------------------------------------------------|
-| `Authentication` | String | **Required**, Generate *JWS Token* by giving the API credentials(ClientId, ClientSecret and UserToken) using HMAC algorithm. |
+| `Authentication` | String | **Required**, Generate *JwsToken* by given the API credentials are ClientId, ClientSecret and UserToken with HMAC algorithm. |
 
 ##### Response:
 
 | Body Response | Type   | Description                                       |
 |:--------------|:-------|:--------------------------------------------------|
-| `AccessToken` | String | The AccessToken should be provided in the Authorization header of all the API Calls. |
+| `AccessToken` | String | We can use future of API calls for Authorization. |
 
 ### Get Business List
 
@@ -130,13 +129,13 @@ build.gradle(project)
 
 | Header Param    | Type   | Description                                                 |
 |:----------------|:-------|:------------------------------------------------------------|
-| `Authorization` | String | **Required**, To access TaxBandits API |
+| `Authorization` | String | **Required**, This is AccessToken for data access from API. |
 
 ##### Response:
 
 | Body Response | Type | Description                |
 |:--------------|:-----|:---------------------------|
-| `Businesses`  | List | The Businesses created under the account will be listed |
+| `Businesses`  | List | We can getting businesses. |
 
 ## Screenshot
 

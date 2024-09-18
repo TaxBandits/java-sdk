@@ -6,7 +6,7 @@ import retrofit2.http.GET;
 
 public interface OauthService {
 
-    @GET(ApiConfig.TBS_O_AUTH_BASE_URL + ApiConfig.TBS_AUTH)
+    @GET(ApiConfig.TBS_PUBLIC_API_OAUTH + ApiConfig.TBS_AUTH)
     Call<AccessTokenResponse> tbsAuth();
 
 }
