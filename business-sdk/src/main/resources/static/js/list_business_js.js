@@ -31,7 +31,9 @@ function getBusinessList() {
                 var rows = '';
                 $.each(businesses, function(index, business) {
                     var editButtonId = "btnEditBusiness" + index;
-                    rows += '<tr><td>' + business.businessId +'</td><td class="taL">' + business.businessNm +'</td><td class="taL" style="word-break: break-all">' + business.email + '</td><td class="taL text-center d-flex flex-row justify-content-center"><button type="button" id="' + editButtonId + '"><i class="fa fa-edit"></i></button></td></tr>';
+                    var isSsnTemp = isSSN(business.einorSSN);
+                    var businessOrFullName = (isSsnTemp && isValidString(business.firstNm)) ? business.firstNm + ' ' + business.lastNm : business.businessNm;
+                    rows += '<tr><td>' + business.businessId +'</td><td class="taL text-center flex-row justify-content-center">' + !isSsnTemp + '</td><td class="taL text-center flex-row justify-content-center">' + business.einorSSN + '</td><td class="taL">' + businessOrFullName + '</td><td class="taL" style="word-break: break-all">' + business.email + '</td><td class="taL text-center d-flex flex-row justify-content-center"><button type="button" id="' + editButtonId + '"><i class="fa fa-edit"></i></button></td></tr>';
                 });
 
                 // Append only once:

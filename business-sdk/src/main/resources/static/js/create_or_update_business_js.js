@@ -18,6 +18,7 @@ $(document).ready(function() {
     }
 
     // Initial method calls
+    suffixes();
     businessTypes();
     getKindOfEmployers();
     getKindOfKindOfPayers();
@@ -25,7 +26,11 @@ $(document).ready(function() {
     getCountries();
 
     //  Button click handlers
-    $("#selectBusinessType").change(function(){
+    $("#checkBoxIsEIN").change(function() {
+        tinViewChanges($("#checkBoxIsEIN").is(":checked"));
+    });
+
+    $("#selectBusinessType").change(function() {
         businessMemberTypes();
     });
 
@@ -48,6 +53,12 @@ function navigateToListBusiness() {
     localStorage.removeItem("businessId");
     localStorage.removeItem("isEdit");
     window.location.href = "listBusiness";    // Name of the HTML page
+}
+
+// US or Foreign UI changes
+function tinViewChanges(isEIN) {
+    if(isEIN) $("#tinDiv").hide();
+    else $("#tinDiv").show();
 }
 
 // US or Foreign UI changes
@@ -104,16 +115,21 @@ function getBusiness(businessId) {
 //  Prefill the edit flow data
 function preFillBusiness(business) {
     $("#textBusinessName").val(business.businessNm);
+    $("#textFirstName").val(business.firstNm);
+    $("#textMeddleName").val(business.middleNm);
+    $("#textLastName").val(business.lastNm);
     $("#textPayerRef").val(business.payerRef);
     $("#textTradeName").val(business.tradeNm);
     $("#textEINOrSSN").val(business.einorSSN);
     $('#checkBoxIsEIN').prop('checked', business.ein);
+    tinViewChanges(business.ein);
     $("#textEmailAddress").val(business.email);
     $("#textContactName").val(business.contactNm);
     $("#textPhone").val(business.phone);
     $("#textPhoneExtn").val(business.phoneExtn);
     $("#textFax").val(business.fax);
     $('#selectBusinessType').val(business.businessType).attr("selected", "selected");
+    $('#selectSuffix').val(business.suffix).attr("selected", "selected");
 
     var signingAuthority = business.signingAuthority;
     if(signingAuthority !== null) {
@@ -149,6 +165,28 @@ function preFillBusiness(business) {
         $("#textZipCode").val(usaddress.zipCd);
     }
 
+}
+
+// Load Business Types into Dropdown
+function suffixes() {
+    $.ajax({
+        async: false,
+        url: suffixesEndPoint,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',
+        success: function (businesses) {
+            if(businesses !== null) {
+                $.each(businesses, function (index, value) {
+                    $('#selectSuffix').append('<option value="' + value.enumValue + '">' + value.enumDisplayName + '</option>');
+                });
+            } else {
+                console.log("Something wrong!");
+            }
+        },
+        error: function (err) {
+            console.log(JSON.stringify(err));
+        }
+    });
 }
 
 // Load Business Types into Dropdown
@@ -322,10 +360,14 @@ function createOrUpdateBusiness(businessId) {
     var request = {
           businessId: businessId,
           businessNm: $("#textBusinessName").val(),
+          firstNm: $("#textFirstName").val(),
+          middleNm: $("#textMeddleName").val(),
+          lastNm: $("#textLastName").val(),
           payerRef: $("#textPayerRef").val(),
           einorSSN: $("#textEINOrSSN").val(),
           ein: $("#checkBoxIsEIN").is(":checked"),
           businessType: $('#selectBusinessType').find(":selected").val(),
+          suffix: $('#selectSuffix').find(":selected").val(),
           contactNm: $("#textContactName").val(),
           email: $("#textEmailAddress").val(),
           fax: $("#textFax").val(),
@@ -359,7 +401,8 @@ function createOrUpdateBusiness(businessId) {
                 var htmlStatus = rowStatus(response.data.statusCode, response.data.statusName, response.data.statusMessage);
                 $("#createBusinessStatusTBody").html(htmlStatus);
 
-                var htmlSuccess = loadSuccess(response.data.businessId, response.data.ein, response.data.einorSSN, response.data.businessNm);
+                var businessOrFullName = (!response.data.ein && isValidString(response.data.firstNm)) ? response.data.firstNm + ' ' + response.data.lastNm : response.data.businessNm;
+                var htmlSuccess = loadSuccess(response.data.businessId, response.data.ein, response.data.einorSSN, businessOrFullName);
                 $("#successRecordsTBody").html(htmlSuccess);
                 $("#successRecordsBody").show();
 
@@ -387,12 +430,12 @@ function createOrUpdateBusiness(businessId) {
 }
 
 // Display error message into the dialog
-function loadSuccess(businessId, ein, einorSSN, businessNm) {
+function loadSuccess(businessId, ein, einorSSN, businessOrFullName) {
     return '<tr>'+
                 '<td class="text-center align-top">' + businessId + '</td>'+
                 '<td class="text-center align-top">' + ein + '</td>'+
                 '<td class="text-center border-radious-bottom-right align-top">' + einorSSN + '</td>'+
-                '<td class="text-center border-radious-bottom-right align-top"> ' + businessNm + '</td>'+
+                '<td class="text-center border-radious-bottom-right align-top"> ' + businessOrFullName + '</td>'+
             '</tr>';
 }
 
