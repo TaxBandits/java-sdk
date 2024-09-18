@@ -15,6 +15,16 @@ import java.util.ArrayList;
 public class EnumRestController {
 
     /**
+     * Get Suffixes from static list
+     * Endpoint: /suffixes
+     * Method: GET
+     **/
+    @GetMapping("/suffixes")
+    public ArrayList<EnumModel> suffixes() {
+        return SuffixEnum.getSuffixes();
+    }
+
+    /**
      * Get Business Types from static list
      * Endpoint: /businessTypes
      * Method: GET

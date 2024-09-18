@@ -9,10 +9,10 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
-    @GET(ApiConfig.BASE_URL + ApiConfig.BUSINESS_LIST)
+    @GET(ApiConfig.TBS_PUBLIC_API_BASE_URL + ApiConfig.BUSINESS_LIST)
     Call<BusinessListResponse> businessList();
 
-    @GET(ApiConfig.BASE_URL + ApiConfig.BUSINESS_CREATE)
+    @GET(ApiConfig.TBS_PUBLIC_API_BASE_URL + ApiConfig.BUSINESS_CREATE)
     Call<CreateBusinessResponse> createBusiness(@RequestBody CreateBusinessRequest request);
 
 }

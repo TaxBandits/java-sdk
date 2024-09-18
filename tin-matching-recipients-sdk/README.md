@@ -175,7 +175,7 @@ The below are the TinMatchingRecipients endpoints
 ```
 **Sandbox**
 ```jsx
-https://testapi.taxbandits.com/v1.7.3/Business/Create
+https://testapi.taxbandits.com/{version}/Business/Create
 ```
 
 ##### Request:
@@ -201,8 +201,9 @@ https://testapi.taxbandits.com/v1.7.3/Business/Create
 ```
 **Sandbox**
 ```jsx
-  https://testapi.taxbandits.com/v1.7.3/Business/List
+  https://testapi.taxbandits.com/{version}/Business/List
 ```
+
 ##### Request:
 
 | Header Param    | Type   | Description                                                 |
@@ -227,7 +228,7 @@ https://testapi.taxbandits.com/v1.7.3/Business/Create
 ```
 **Sandbox**
 ```jsx
-  https://testapi.taxbandits.com/v1.7.3/TINMatchingRecipients/Request
+  https://testapi.taxbandits.com/{version}/TINMatchingRecipients/Request
 ```
 ##### Request:
 
@@ -252,7 +253,7 @@ https://testapi.taxbandits.com/v1.7.3/Business/Create
 ```
 **Sandbox**
 ```jsx
-  https://testapi.taxbandits.com/v1.7.3/TINMatchingRecipients/List
+  https://testapi.taxbandits.com/{version}/TINMatchingRecipients/List
 ```
 ##### Request:
 
@@ -277,7 +278,7 @@ https://testapi.taxbandits.com/v1.7.3/Business/Create
 ```
 **Sandbox**
 ```jsx
-  https://testapi.taxbandits.com/v1.7.3/TINMatchingRecipients/Status
+  https://testapi.taxbandits.com/{version}/TINMatchingRecipients/Status
 ```
 ##### Request:
 
@@ -303,7 +304,7 @@ https://testapi.taxbandits.com/v1.7.3/Business/Create
 ```
 **Sandbox**
 ```jsx
-  https://testapi.taxbandits.com/v1.7.3/TINMatchingRecipients/CancelRequest
+  https://testapi.taxbandits.com/{version}/TINMatchingRecipients/CancelRequest
 ```
 ##### Request:
 
@@ -321,5 +322,7 @@ https://testapi.taxbandits.com/v1.7.3/Business/Create
 | Response Body | Type        | Description                                                                                                                                    |
 |:--------------|:------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|
 | `TinResponse` | Model class | We can only cancel a request if the TIN Matching status is "Order Created". Otherwise, we can getting canceled information from the recipient. |
+
+> In the above URLs, `{version}` is the endpoint version of TaxBandits API.
 
 For more information, please refer: https://developer.taxbandits.com/

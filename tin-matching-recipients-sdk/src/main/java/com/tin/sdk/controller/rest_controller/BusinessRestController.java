@@ -6,7 +6,6 @@ import com.tin.sdk.model.CreateBusinessResponse;
 import com.tin.sdk.retrofit.RetrofitResponse;
 import com.tin.sdk.retrofit.services.BusinessListService;
 import com.tin.sdk.retrofit.services.CreateBusinessService;
-import com.tin.sdk.utils.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.GetMapping;
