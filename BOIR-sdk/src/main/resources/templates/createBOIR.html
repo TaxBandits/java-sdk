@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="styles/css/Site.css">
+    <link rel="stylesheet" href="styles/css/style.css">
+    <link rel="stylesheet" href="styles/css/icons-mdi/css/materialdesignicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create BOIR</title>
+</head>
+<body>
+
+<div class="col-md-12 text-center mt-3">
+    <img src="images/tbslogo.png" alt="TaxBandits Logo" class="mb-5 logo">
+</div>
+
+<div class="container">
+    <div class="w-75 m-auto">
+        <div class="border-1 border rounded-2 pb-4">
+            <h2 class="head-h1 px-12px">BOIR - Create</h2>
+            <div class="row d-flex justify-content-center mb-15px">
+                <div class="col-md-5">
+                    <label for="selectReportType" class="control-label">
+                        <span class="text-danger">*</span>Report Type:
+                    </label>
+                    <select class="form-control form-select" id="selectReportType">
+                        <option disabled selected value="INITIAL">Initial</option>
+                        <!--    <option value="UPDATE">Update</option>
+                        <option value="CORRECT">Correct</option>
+                        <option value="EXEMPT">Exempt</option>  -->
+                    </select>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+
+            <!--    Reporting Company Start   -->
+            <div>
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-11">
+                        <h4 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">Reporting Company</h4>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <label class="control-label"><span class="text-danger">*</span>TIN Type:</label>
+                        <div class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioTINTypeEIN" value="EIN"
+                                       name="radioTINType" checked/>
+                                <label class="form-check-label" for="radioTINTypeEIN">EIN</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioTINTypeSSN" value="SSN"
+                                       name="radioTINType"/>
+                                <label class="form-check-label" for="radioTINTypeSSN">SSN</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioTINTypeITIN" value="ITIN"
+                                       name="radioTINType"/>
+                                <label class="form-check-label" for="radioTINTypeITIN">ITIN</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioTINTypeFTIN" value="FTIN"
+                                       name="radioTINType"/>
+                                <label class="form-check-label" for="radioTINTypeFTIN">FTIN</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="textTIN" class="control-label"><span class="text-danger">*</span>TIN:</label>
+                        <input type="text" class="form-control" id="textTIN" maxlength="25"/>
+                    </div>
+                </div>
+
+                <!--<div id="divSSNorITIN" style="display: none;">
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textFirstNameRC" class="control-label"><span class="text-danger">*</span>First
+                                Name:</label>
+                            <input type="text" class="form-control" id="textFirstNameRC"/>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="textMiddleNameRC" class="control-label">
+                                <span class="text-danger"></span>Middle name (optional):</label>
+                            <input type="text" class="form-control" id="textMiddleNameRC"/>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textLastNameRC" class="control-label">
+                                <span class="text-danger">*</span>Last Name:
+                            </label>
+                            <input type="text" class="form-control" id="textLastNameRC"/>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="selectSuffixRC" class="control-label">Suffix:</label>
+                            <select class="form-control form-select" id="selectSuffixRC">
+                                <option disabled selected value="">-&#45;&#45; Select -&#45;&#45;</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                            <label for="textLegalNm" class="control-label">
+                                <span class="text-danger">*</span>Company's legal name:
+                            </label>
+                            <input type="text" class="form-control" id="textLegalNm"/>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="textDBA" class="control-label">Alternate Name (DBA/Trade Name):</label>
+                        <input type="text" class="form-control" id="textDBA"/>
+                    </div>
+                </div>
+
+                <div style="display: none" id="divCountryJurisdiction">
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="selectCountryJurisdiction" class="control-label">
+                                <span class="text-danger">*</span>Country/Jurisdiction:
+                            </label>
+                            <select class="form-control form-select" id="selectCountryJurisdiction">
+                                <option disabled selected value="">--- Select ---</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            <u>Jurisdiction of Formation or First Registration</u>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <label class="control-label"><span class="text-danger">*</span>Choose where your company was
+                            formed:</label>
+                        <div class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioUnitedStates"
+                                       value="United States" name="radioFormed" checked/>
+                                <label class="form-check-label" for="radioUnitedStates">United States</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioUSTerritory"
+                                       value="U.S. Territory" name="radioFormed"/>
+                                <label class="form-check-label" for="radioUSTerritory">U.S. Territory</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioForeignCountry"
+                                       value="Foreign Country" name="radioFormed"/>
+                                <label class="form-check-label" for="radioForeignCountry">Foreign Country</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div id="divForeignCountryOfFormation" style="display: none">
+                            <label for="selectForeignCountry" class="control-label">
+                                <span class="text-danger">*</span>Foreign country of formation:
+                            </label>
+                            <select class="form-control form-select" id="selectForeignCountry">
+                                <option selected disabled value="">---Select---</option>
+                            </select>
+                        </div>
+
+                        <div id="divUSTerritoryOfRegistration" style="display: none">
+                            <label for="selectUSTerritoryCountry" class="control-label">
+                                <span class="text-danger">*</span>U.S. territory of registration:
+                            </label>
+                            <select class="form-control form-select" id="selectUSTerritoryCountry">
+                                <option selected disabled value="">---Select---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <div id="divDomesticReportingCompany" class="div">
+                            <label class="control-label">
+                                <span class="text-danger">*</span>Domestic Reporting Company:
+                            </label>
+                            <div class="mt-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="radioDomesticReportingCompanyState"
+                                           value="State" name="radioDomesticReportingCompany" checked/>
+                                    <label class="form-check-label"
+                                           for="radioDomesticReportingCompanyState">State</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="radioUSTribalJurisdiction"
+                                           value="U.S. Tribal Jurisdiction" name="radioDomesticReportingCompany"/>
+                                    <label class="form-check-label" for="radioUSTribalJurisdiction">
+                                        U.S. Tribal Jurisdiction
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+
+                        <div id="divUSStateOfRegistration">
+                            <label for="selectFormedState" class="control-label">
+                                <span class="text-danger">*</span>U.S. state of registration:
+                            </label>
+                            <select class="form-control form-select" id="selectFormedState">
+                                <option selected disabled value="">---Select---</option>
+                            </select>
+                        </div>
+
+                        <div id="divUSStateOfFirstRegistration" style="display: none">
+                            <label for="selectFormedStateFirst" class="control-label">
+                                <span class="text-danger">*</span>U.S. state of first registration:
+                            </label>
+                            <select class="form-control form-select" id="selectFormedStateFirst">
+                                <option selected disabled value="">---Select---</option>
+                            </select>
+                        </div>
+
+                        <div id="divUSTribalJurisdiction" style="display: none">
+                            <label for="selectUSTribalJurisdiction" class="control-label">
+                                <span class="text-danger">*</span>U.S. tribal jurisdiction of registration:
+                            </label>
+                            <select class="form-control form-select" id="selectUSTribalJurisdiction">
+                                <option selected disabled value="">---Select---</option>
+                            </select>
+                        </div>
+
+                        <div id="divUSTribalJurisdictionFirst" style="display: none">
+                            <label for="selectUSTribalJurisdictionFirst" class="control-label">
+                                <span class="text-danger">*</span>U.S. tribal jurisdiction of first registration:
+                            </label>
+                            <select class="form-control form-select" id="selectUSTribalJurisdictionFirst">
+                                <option selected disabled value="">---Select---</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divOtherTribeNm" style="display: none">
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textOtherTribeNm" class="control-label">
+                                <span class="text-danger">*</span>Name of Other Tribe:
+                            </label>
+                            <input type="text" class="form-control" id="textOtherTribeNm">
+                        </div>
+
+                        <div class="col-md-5"></div>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <label class="control-label"><span class="text-danger"></span>
+                            When was your company first registered in the United States?
+                        </label>
+                        <div class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioAfter2024"
+                                       value="On or After January 1, 2024" name="radioCompanyRegistered"
+                                       checked/>
+                                <label class="form-check-label" for="radioAfter2024">
+                                    On or After January 1, 2024
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioBefore2024"
+                                       value="Before January 1, 2024" name="radioCompanyRegistered"/>
+                                <label class="form-check-label" for="radioBefore2024">
+                                    Before January 1, 2024
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="textEffectiveDate" class="control-label">
+                            <span class="text-danger">*</span>Company U.S. registration effective date:
+                        </label>
+                        <input type="text" class="form-control" id="textEffectiveDate" placeholder="MM-DD-YYYY">
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            <u>Current Address: U.S / U.S Territory</u>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <label for="textCurrentStreetAddress" class="control-label">
+                            <span class="text-danger">*</span>Street address:
+                        </label>
+                        <input type="text" class="form-control" id="textCurrentStreetAddress">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="textCurrentCity" class="control-label">
+                            <span class="text-danger">*</span>City/Town:
+                        </label>
+                        <input type="text" class="form-control" id="textCurrentCity"/>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <label for="selectCurrentState" class="control-label">
+                            <span class="text-danger">*</span>State:
+                        </label>
+                        <select class="form-control form-select" id="selectCurrentState">
+                            <option disabled selected value="">--- Select ---</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="textCurrentZipCode" class="control-label">
+                            <span class="text-danger">*</span>Zip code:
+                        </label>
+                        <input type="text" class="form-control" id="textCurrentZipCode" maxLength="10"/>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            <u>Foreign Pooled Investment Vehicle</u></h5>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <div class="mt-2">
+                            <label class="control-label">
+                                Is your reporting company a foreign pooled investment vehicle?
+                            </label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsPooledInvestmentVehicleYes"
+                                       value="Yes" name="radioIsPooledInvestmentVehicle"/>
+                                <label class="form-check-label" for="radioIsPooledInvestmentVehicleYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsPooledInvestmentVehicleNo"
+                                       value="No" name="radioIsPooledInvestmentVehicle" checked/>
+                                <label class="form-check-label" for="radioIsPooledInvestmentVehicleNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5"></div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            <u>Request a FinCEN Identifier</u>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <div class="mt-2">
+                            <label class="control-label">
+                                Do you want to request a FinCEN identifier for this reporting company?
+                            </label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsFinCENIdentifierYes"
+                                       value="United States" name="radioIsFinCENIdentifier"/>
+                                <label class="form-check-label" for="radioIsFinCENIdentifierYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsFinCENIdentifierNo"
+                                       value="U.S. Territory" name="radioIsFinCENIdentifier" checked/>
+                                <label class="form-check-label" for="radioIsFinCENIdentifierNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5"></div>
+                </div>
+
+            </div>
+
+            <!--    Reporting Company End   -->
+
+            <!--    Company Applicant Information Start -->
+            <div id="divCompanyApplicant">
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-11">
+                        <h4 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            Company Applicant Information
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            <u>FinCEN Identifier</u>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <div class="mt-2">
+                            <label class="control-label">
+                                Does this company applicant have a FinCEN ID?
+                            </label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsHaveFinCENIDYesCA"
+                                       value="Yes" name="radioIsHaveFinCENID"/>
+                                <label class="form-check-label" for="radioIsHaveFinCENIDYesCA">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsHaveFinCENIDNoCA"
+                                       value="No" name="radioIsHaveFinCENID" checked/>
+                                <label class="form-check-label" for="radioIsHaveFinCENIDNoCA">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5"></div>
+                </div>
+
+                <div id="divFinCENidYes" style="display: none">
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textFinCENIdCA" class="control-label">
+                                <span class="text-danger">*</span>FinCEN ID:
+                            </label>
+                            <input type="text" class="form-control" id="textFinCENIdCA">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="textFinCENIdFirstNameCA" class="control-label">
+                                <span class="text-danger">*</span>First name:
+                            </label>
+                            <input type="text" class="form-control" id="textFinCENIdFirstNameCA">
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textFinCENIdMiddleNameCA" class="control-label">Middle initial
+                                (optional)</label>
+                            <input type="text" class="form-control" id="textFinCENIdMiddleNameCA">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="textFinCENIdLastNameCA" class="control-label">
+                                <span class="text-danger">*</span>Last name:
+                            </label>
+                            <input type="text" class="form-control" id="textFinCENIdLastNameCA">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="divFinCENidNo">
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                <u>Upload Identification Document</u>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="selectFinCENDocumentTypeCA" class="control-label">
+                                <span class="text-danger">*</span>Identifying document type:
+                            </label>
+                            <select class="form-control form-select" id="selectFinCENDocumentTypeCA">
+                                <option disabled selected value="">--- Select ---</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-5"></div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textFinCENDocumentNumberCA" class="control-label">
+                                <span class="text-danger">*</span>Identifying document number:
+                            </label>
+                            <input type="text" class="form-control" id="textFinCENDocumentNumberCA">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="textFinCENDocDateCA" class="control-label">
+                                <span class="text-danger">*</span>Document expiration date:
+                            </label>
+                            <input type="text" class="form-control" id="textFinCENDocDateCA" placeholder="MM/DD/YYYY">
+                        </div>
+                    </div>
+
+                    <div id="divDriverLicense" style="display: none">
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="selectDocumentCountryCA" class="control-label">
+                                    <span class="text-danger">*</span>Document issued country/jurisdiction:
+                                </label>
+                                <select class="form-control form-select" id="selectDocumentCountryCA">
+                                    <option disabled selected value="">--- Select ---</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-5">
+                                <div id="divDocumentIssuedStateCA" style="display: none">
+                                    <label for="selectDocumentIssuedStateCA" class="control-label">
+                                        <span class="text-danger">*</span>Document issued state:
+                                    </label>
+                                    <select class="form-control form-select" id="selectDocumentIssuedStateCA">
+                                        <option value="">--- Select ---</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divDocumentIssuedTribalJurisdictionCA" style="display: none">
+                            <div class="row d-flex justify-content-center mb-15px">
+                                <div class="col-md-5">
+                                    <label for="selectDocumentIssuedTribalJurisdictionCA" class="control-label">
+                                        <span class="text-danger">*</span>Document issued tribal jurisdiction:
+                                    </label>
+                                    <select class="form-control form-select"
+                                            id="selectDocumentIssuedTribalJurisdictionCA">
+                                        <option disabled selected value="">--- Select ---</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div id="divOtherTribalCA">
+                                        <label for="selectOtherTribalCA" class="control-label">
+                                            <span class="text-danger">*</span>Other tribe:
+                                        </label>
+                                        <input type="text" class="form-control" id="selectOtherTribalCA"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                <u>Personal Details</u>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textFirstNameCAPS" class="control-label">
+                                <span class="text-danger">*</span>First name:
+                            </label>
+                            <input type="text" class="form-control" id="textFirstNameCAPS">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="textMiddleNameCAPS" class="control-label">Middle initial (optional):</label>
+                            <input type="text" class="form-control" id="textMiddleNameCAPS">
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textLastNameCAPS" class="control-label">
+                                <span class="text-danger">*</span>Last name:
+                            </label>
+                            <input type="text" class="form-control" id="textLastNameCAPS">
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="selectSuffixCAPS" class="control-label">
+                                <span class="text-danger"></span>Suffix (optional):
+                            </label>
+                            <select class="form-control form-select" id="selectSuffixCAPS">
+                                <option disabled selected value="">--- Select ---</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label for="textDateOfBirthCAPS" class="control-label">
+                                <span class="text-danger">*</span>Date of birth:
+                            </label>
+                            <input type="text" class="form-control" id="textDateOfBirthCAPS"
+                                   placeholder="MM-DD-YYYY">
+                        </div>
+
+                        <div class="col-md-5"></div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                <u>Residential Address</u>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div id="divIsOnAfterJanuary1_2024">
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-10">
+                                <div class="mt-2">
+                                    <label>
+                                        If the company applicant formed the entity as part of their business activities
+                                        (for example, as a paralegal), enter their business address. Otherwise, enter
+                                        their residential address.
+                                    </label> <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="radioIsBusinessCA"
+                                               value="Business" name="radioResidentialCA"/>
+                                        <label class="form-check-label" for="radioIsBusinessCA">
+                                            Business Address
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="radioIsResidentialCA"
+                                               value="Residential" name="radioResidentialCA" checked/>
+                                        <label class="form-check-label" for="radioIsResidentialCA">
+                                            Residential Address
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                   id="checkIsPreviouslyUsedAddressCA">
+                            <label class="control-label" for="checkIsPreviouslyUsedAddressCA">
+                                Is previously used address</label>
+                        </div>
+
+                        <div class="col-md-5"></div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                   id="checkIsForeignAddress">
+                            <label class="control-label" for="checkIsForeignAddress">
+                                Foreign address (Outside U.S.)</label>
+                        </div>
+
+                        <div class="col-md-5"></div>
+                    </div>
+
+                    <div id="divUSAddressCARA">
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textStreetAddressCARA" class="control-label">
+                                    <span class="text-danger">*</span>Street address:
+                                </label>
+                                <input type="text" class="form-control" id="textStreetAddressCARA">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="textCityCARA" class="control-label">
+                                    <span class="text-danger">*</span>City/Town:
+                                </label>
+                                <input type="text" class="form-control" id="textCityCARA"/>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="selectStateCARA" class="control-label">
+                                    <span class="text-danger">*</span>State:
+                                </label>
+                                <select class="form-control form-select" id="selectStateCARA">
+                                    <option disabled selected value="">--- Select ---</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="textZipCodeCARA" class="control-label">
+                                    <span class="text-danger">*</span>Zip code:
+                                </label>
+                                <input type="text" class="form-control" id="textZipCodeCARA" maxLength="10"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divForeignAddressCARA" style="display: none">
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="selectCountryForeignCARA" class="control-label">
+                                    <span class="text-danger">*</span>Country
+                                </label>
+                                <select class="form-control form-select" id="selectCountryForeignCARA">
+                                    <option disabled selected value="">--- Select ---</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="textStreetAddressForeignCARA" class="control-label">
+                                    <span class="text-danger">*</span>Street address:
+                                </label>
+                                <input type="text" class="form-control" id="textStreetAddressForeignCARA">
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textCityForeignCARA" class="control-label">
+                                    <span class="text-danger">*</span>City/Town:
+                                </label>
+                                <input type="text" class="form-control" id="textCityForeignCARA">
+                            </div>
+
+                            <div class="col-md-5">
+                                <div id="divStateOrProvinceForeignCARA">
+                                    <label for="textStateOrProvinceForeignCARA" class="control-label">
+                                        <span class="text-danger">*</span>State or province (optional):
+                                    </label>
+                                    <input type="text" class="form-control" id="textStateOrProvinceForeignCARA">
+                                </div>
+                                <div id="divStateForeignCARA" style="display: none">
+                                    <label for="selectStateForeignCARA" class="control-label">
+                                        <span class="text-danger">*</span>State
+                                    </label>
+                                    <select class="form-control form-select" id="selectStateForeignCARA">
+                                        <option disabled selected value="">--- Select ---</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textZipPostalCodeForeignCARA" class="control-label">
+                                    <span class="text-danger">*</span>ZIP or postal code:
+                                </label>
+                                <input type="text" class="form-control" id="textZipPostalCodeForeignCARA">
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!--    Company Applicant Information End -->
+
+            <!--    Beneficial Owner Start      -->
+            <div>
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-11">
+                        <h4 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            Beneficial Owner
+                        </h4>
+                    </div>
+                </div>
+
+                <!--    Exempt Entity   -->
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            <u>Exempt Entity</u>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <label class="control-label">
+                            Is the ownership interest of the reporting company held exclusively through one or more
+                            exempt entities?
+                        </label>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="radioIsExemptEntityYes"
+                                   value="Yes" name="radioIsExemptEntity"/>
+                            <label class="form-check-label" for="radioIsExemptEntityYes">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="radioIsExemptEntityNo"
+                                   value="No" name="radioIsExemptEntity" checked/>
+                            <label class="form-check-label" for="radioIsExemptEntityNo">No</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+
+                <!--    Exempt Entity Yes  -->
+                <div id="divExemptEntityInformationYes" style="display: none">
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                <u>Exempt Entity Information</u>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-5">
+                            <label class="control-label" for="textExemptEntityLegalName">
+                                Exempt Entity’s Legal Name
+                            </label>
+                            <input type="text" class="form-control" id="textExemptEntityLegalName" maxlength="25"/>
+                        </div>
+
+                        <div class="col-md-5">
+                        </div>
+                    </div>
+                </div>
+
+                <!--    Exempt Entity  No -->
+                <div id="divExemptEntityInformationNo">
+
+                    <!--    Minor Child     -->
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                <u>Minor Child</u>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <label class="control-label">
+                                Is the beneficial owner of the reporting company a minor?
+                            </label>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsMinorChildYes"
+                                       value="Yes" name="radioIsMinorChild"/>
+                                <label class="form-check-label" for="radioIsMinorChildYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioIsMinorChildNo"
+                                       value="No" name="radioIsMinorChild" checked/>
+                                <label class="form-check-label" for="radioIsMinorChildNo">No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+
+                    <!--    Minor Child  Yes   -->
+                    <div id="divMinorChildDateOfBirthYes" style="display: none">
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label class="control-label" for="textChildDateBO">
+                                    Enter minor child date of birth
+                                </label>
+                                <input type="text" class="form-control" id="textChildDateBO" placeholder="MM-DD-YYYY"/>
+                            </div>
+
+                            <div class="col-md-5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--    FinCEN Identifier (Parent/Legal Guardian)    -->
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                <u>FinCEN Identifier</u>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center mb-15px">
+                        <div class="col-md-10">
+                            <label class="control-label">Does this beneficial owner have a FinCEN ID?</label>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioBSIsFinCENIdentifierYesBO"
+                                       value="Yes" name="radioBSIsFinCENIdentifier"/>
+                                <label class="form-check-label" for="radioBSIsFinCENIdentifierYesBO">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radioBSIsFinCENIdentifierNoBO"
+                                       value="No" name="radioBSIsFinCENIdentifier" checked/>
+                                <label class="form-check-label" for="radioBSIsFinCENIdentifierNoBO">No</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+
+                    <!--    FinCEN Identifier (Parent/Legal Guardian)  Yes   -->
+                    <div id="divFinCENidYesBO" style="display: none">
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textFinCENIdBO" class="control-label">
+                                    <span class="text-danger">*</span>FinCEN ID:
+                                </label>
+                                <input type="text" class="form-control" id="textFinCENIdBO">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="textFinCENIdFirstNameBO" class="control-label">
+                                    <span class="text-danger">*</span>First name:
+                                </label>
+                                <input type="text" class="form-control" id="textFinCENIdFirstNameBO">
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textFinCENIdMiddleNameBO" class="control-label">Middle initial
+                                    (optional)</label>
+                                <input type="text" class="form-control" id="textFinCENIdMiddleNameBO">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="textFinCENIdLastNameBO" class="control-label">
+                                    <span class="text-danger">*</span>Last name:
+                                </label>
+                                <input type="text" class="form-control" id="textFinCENIdLastNameBO">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--    Upload Identification Document    -->
+                    <div id="divUploadIdentificationDocument">
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-10">
+                                <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                    <u>Upload Identification Document</u>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="selectFinCENDocumentTypeBO" class="control-label">
+                                    <span class="text-danger">*</span>Identifying document type:
+                                </label>
+                                <select class="form-control form-select" id="selectFinCENDocumentTypeBO">
+                                    <option disabled selected value="">--- Select ---</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-5"></div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textFinCENDocumentNumberBO" class="control-label">
+                                    <span class="text-danger">*</span>Identifying document number:
+                                </label>
+                                <input type="text" class="form-control" id="textFinCENDocumentNumberBO">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="textFinCENDocDateBO" class="control-label">
+                                    <span class="text-danger">*</span>Document expiration date:
+                                </label>
+                                <input type="text" class="form-control" id="textFinCENDocDateBO"
+                                       placeholder="MM/DD/YYYY">
+                            </div>
+                        </div>
+
+                        <div id="divDriverLicenseBO" style="display: none">
+
+                            <div class="row d-flex justify-content-center mb-15px">
+                                <div class="col-md-5">
+                                    <label for="selectDocumentCountryBO" class="control-label">
+                                        <span class="text-danger">*</span>Document issued country/jurisdiction:
+                                    </label>
+                                    <select class="form-control form-select" id="selectDocumentCountryBO">
+                                        <option disabled selected value="">--- Select ---</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div id="divDocumentIssuedStateBO" style="display: none">
+                                        <label for="selectDocumentIssuedStateBO" class="control-label">
+                                            <span class="text-danger">*</span>Document issued state:
+                                        </label>
+                                        <select class="form-control form-select" id="selectDocumentIssuedStateBO">
+                                            <option value="">--- Select ---</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divDocumentIssuedTribalJurisdictionBO" style="display: none">
+                                <div class="row d-flex justify-content-center mb-15px">
+                                    <div class="col-md-5">
+                                        <label for="selectDocumentIssuedTribalJurisdictionBO" class="control-label">
+                                            <span class="text-danger">*</span>Document issued tribal jurisdiction:
+                                        </label>
+                                        <select class="form-control form-select"
+                                                id="selectDocumentIssuedTribalJurisdictionBO">
+                                            <option disabled selected value="">--- Select ---</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div id="divOtherTribalBO">
+                                            <label for="selectOtherTribalBO" class="control-label">
+                                                <span class="text-danger">*</span>Other tribe:
+                                            </label>
+                                            <input type="text" class="form-control" id="selectOtherTribalBO"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-10">
+                                <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                    <u>Personal Details</u>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textFirstNameBOPS" class="control-label">
+                                    <span class="text-danger">*</span>First name:
+                                </label>
+                                <input type="text" class="form-control" id="textFirstNameBOPS">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="textMiddleNameBOPS" class="control-label">Middle initial (optional):</label>
+                                <input type="text" class="form-control" id="textMiddleNameBOPS">
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textLastNameBOPS" class="control-label">
+                                    <span class="text-danger">*</span>Last name:
+                                </label>
+                                <input type="text" class="form-control" id="textLastNameBOPS">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="selectSuffixBOPS" class="control-label">
+                                    <span class="text-danger"></span>Suffix (optional):
+                                </label>
+                                <select class="form-control form-select" id="selectSuffixBOPS">
+                                    <option disabled selected value="">--- Select ---</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <label for="textDateOfBirthBOPS" class="control-label">
+                                    <span class="text-danger">*</span>Date of birth:
+                                </label>
+                                <input type="text" class="form-control" id="textDateOfBirthBOPS"
+                                       placeholder="MM-DD-YYYY">
+                            </div>
+
+                            <div class="col-md-5"></div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-10">
+                                <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                                    <u>Residential Address</u>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                       id="checkIsPreviouslyUsedAddressBO">
+                                <label class="control-label" for="checkIsPreviouslyUsedAddressBO">
+                                    Is previously used address</label>
+                            </div>
+
+                            <div class="col-md-5"></div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center mb-15px">
+                            <div class="col-md-5">
+                                <input class="me-1 form-check-input cursor-pointer" type="checkbox"
+                                       id="checkIsForeignAddressBO">
+                                <label class="control-label" for="checkIsForeignAddressBO">
+                                    Foreign address (Outside U.S.)</label>
+                            </div>
+
+                            <div class="col-md-5"></div>
+                        </div>
+
+                        <div id="divUSAddressBORA">
+                            <div class="row d-flex justify-content-center mb-15px">
+                                <div class="col-md-5">
+                                    <label for="textStreetAddressBORA" class="control-label">
+                                        <span class="text-danger">*</span>Street address:
+                                    </label>
+                                    <input type="text" class="form-control" id="textStreetAddressBORA">
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="textCityBORA" class="control-label">
+                                        <span class="text-danger">*</span>City/Town:
+                                    </label>
+                                    <input type="text" class="form-control" id="textCityBORA"/>
+                                </div>
+                            </div>
+
+                            <div class="row d-flex justify-content-center mb-15px">
+                                <div class="col-md-5">
+                                    <label for="selectStateBORA" class="control-label">
+                                        <span class="text-danger">*</span>State:
+                                    </label>
+                                    <select class="form-control form-select" id="selectStateBORA">
+                                        <option disabled selected value="">--- Select ---</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="textZipCodeBORA" class="control-label">
+                                        <span class="text-danger">*</span>Zip code:
+                                    </label>
+                                    <input type="text" class="form-control" id="textZipCodeBORA" maxLength="10"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divForeignAddressBORA" style="display: none">
+                            <div class="row d-flex justify-content-center mb-15px">
+                                <div class="col-md-5">
+                                    <label for="selectCountryForeignBORA" class="control-label">
+                                        <span class="text-danger">*</span>Country
+                                    </label>
+                                    <select class="form-control form-select" id="selectCountryForeignBORA">
+                                        <option disabled selected value="">--- Select ---</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="textStreetAddressForeignBORA" class="control-label">
+                                        <span class="text-danger">*</span>Street address:
+                                    </label>
+                                    <input type="text" class="form-control" id="textStreetAddressForeignBORA">
+                                </div>
+                            </div>
+
+                            <div class="row d-flex justify-content-center mb-15px">
+                                <div class="col-md-5">
+                                    <label for="textCityForeignBORA" class="control-label">
+                                        <span class="text-danger">*</span>City/Town:
+                                    </label>
+                                    <input type="text" class="form-control" id="textCityForeignBORA">
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div id="divStateOrProvinceForeignBORA">
+                                        <label for="textStateOrProvinceForeignBORA" class="control-label">
+                                            <span class="text-danger">*</span>State or province (optional):
+                                        </label>
+                                        <input type="text" class="form-control" id="textStateOrProvinceForeignBORA">
+                                    </div>
+                                    <div id="divStateForeignBORA" style="display: none">
+                                        <label for="selectStateForeignBORA" class="control-label">
+                                            <span class="text-danger">*</span>State
+                                        </label>
+                                        <select class="form-control form-select" id="selectStateForeignBORA">
+                                            <option disabled selected value="">--- Select ---</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row d-flex justify-content-center mb-15px">
+                                <div class="col-md-5">
+                                    <label for="textZipPostalCodeForeignBORA" class="control-label">
+                                        <span class="text-danger">*</span>ZIP or postal code:
+                                    </label>
+                                    <input type="text" class="form-control" id="textZipPostalCodeForeignBORA">
+                                </div>
+                                <div class="col-md-5"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!--    Beneficial Owner End      -->
+
+            <!--    Submitter Information Start    -->
+            <div>
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-10">
+                        <h5 class="sub-head text-left mt-4 mb-3" style="font-weight: bold">
+                            <u>Submitter Information</u>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <label for="textFirstNameSI" class="control-label">
+                            <span class="text-danger">*</span>First name:
+                        </label>
+                        <input type="text" class="form-control" id="textFirstNameSI">
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="textLastNameSI" class="control-label">
+                            <span class="text-danger">*</span>Last name:
+                        </label>
+                        <input type="text" class="form-control" id="textLastNameSI">
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center mb-15px">
+                    <div class="col-md-5">
+                        <label for="textEmailSI" class="control-label">
+                            <span class="text-danger">*</span>Email
+                        </label>
+                        <input type="text" class="form-control" id="textEmailSI">
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+            <!--    Submitter Information End    -->
+
+            <!--   Create - BOIR Button    -->
+            <div class="text-center p-10">
+                <button class="btn btn_primary shadow btn_md" id="createBOIRButton">Create BOIR
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true" id="createBOIRProgressBar"
+                       style="display:none"></i>
+                </button>
+            </div>
+        </div>
+
+        <button class="btn_cancel shadow mt-3 mb-3" th:attr="onclick='location.href=\'' + @{/home} + '\''">Back</button>
+    </div>
+
+    <div class="modal fade" id="createBOIRModalToggle" aria-hidden="true"
+         aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" id="ModelBody">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Create BOIR Response</h5>
+                    <button type="button"
+                            class="btn-close bg-white rounded-circle border-0 fw-bold position-absolute end-n-10 top-n-13 modal-close button-hide fs-18 fw-500"
+                            data-bs-dismiss="modal" aria-label="Close">X
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="divSuccessRecordsBody" style="display:none">
+                        <h2 class="tabel-sub-head">Company Applicants</h2>
+                        <div class="table-container mt-2 mb-4">
+                            <table>
+                                <tr class="fw-600 ">
+                                    <th class="text-center fw-600 bg-dull-blue" width="20%">SequenceId</th>
+                                    <th class="text-center" width="55%">CompanyApplicantId</th>
+                                    <th class="text-center" width="25%">Status</th>
+                                </tr>
+                                <tbody id="tBodyCompanyApplicantStatus"></tbody>
+                            </table>
+
+                            <h2 class="tabel-sub-head mt-4">Beneficial Owners</h2>
+                            <div class="table-container mt-2 mb-4">
+                                <table>
+                                    <tr class="fw-600 ">
+                                        <th class="text-center fw-600 bg-dull-blue" width="20%">SequenceId</th>
+                                        <th class="text-center" width="55%">BeneficialOwnersId</th>
+                                        <th class="text-center" width="25%">Status</th>
+                                    </tr>
+                                    <tbody id="tBodyBeneficialOwnerStatus"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divErrorBody" style="display:none">
+                        <h2 class="tabel-sub-head">Error Records</h2>
+                        <div class="table-container mb-3">
+                            <table>
+                                <tr class="fw-600 ">
+                                    <th class="text-center fw-600">ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Message</th>
+                                </tr>
+                                <tbody id="tBodyErrors"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="divErrorRecords" style="display:none">
+                        <div id="divCompanyApplicantErrorRecords" style="display: none">
+                            <h2 class="tabel-sub-head">Company Applicant Error Records</h2>
+                            <div class="table-container mb-3">
+                                <table>
+                                    <tr class="fw-600 ">
+                                        <th class="text-center fw-600" width="20%">ID</th>
+                                        <th class="text-center" width="55%">Name</th>
+                                        <th class="text-center" width="25%">Message</th>
+                                    </tr>
+                                    <tbody id="tBodyCompanyApplicantErrorRecords"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="divBeneficialOwnersErrorRecords" style="display: none">
+                            <div>
+                                <h2 class="tabel-sub-head">Beneficial Owners Error Records</h2>
+                                <div class="table-container mb-3">
+                                    <table>
+                                        <tr class="fw-600 ">
+                                            <th class="text-center fw-600" width="20%">ID</th>
+                                            <th class="text-center" width="55%">Name</th>
+                                            <th class="text-center" width="25%">Message</th>
+                                        </tr>
+                                        <tbody id="tBodyBeneficialOwnerErrorRecords"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divSubmitterInformationErrorRecords" style="display: none">
+                            <h2 class="tabel-sub-head">Submitter Information Error Records</h2>
+                            <div class="table-container mb-3">
+                                <table>
+                                    <tr class="fw-600 ">
+                                        <th class="text-center fw-600" width="20%">ID</th>
+                                        <th class="text-center" width="55%">Name</th>
+                                        <th class="text-center" width="25%">Message</th>
+                                    </tr>
+                                    <tbody id="tBodySubmitterInformationErrorRecords"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div> <!-- /.modal-content -->
+        </div> <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+
+</div>
+</div>
+
+<!--    Date picker start  -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!--    Date picker start  -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="js/utils_js.js"></script>
+<script src="js/string_utils_js.js"></script>
+<script src="js/end_points_js.js"></script>
+<script src="js/create_boir.js"></script>
+</body>
+</html>
